@@ -9,16 +9,18 @@
  * @author samsung
  */
 import java.util.Scanner;
-public class IdentitasKelas {
-    private String namaRuang;
-    private int lokasiRuang;
-    private String prodi;
 
+public class IdentitasKelas {
+    
+    String namaRuang;
+    String lokasiRuang;
+    String prodi;
+    
+    
     public String getNamaRuang() {
         return namaRuang;
     }
-
-    public int getLokasiRuang() {
+    public String getLokasiRuang() {
         return lokasiRuang;
     }
 
@@ -30,22 +32,14 @@ public class IdentitasKelas {
         this.namaRuang = namaRuang;
     }
 
-    public void setLokasiRuang(int lokasiRuang) {
+    public void setLokasiRuang(String lokasiRuang) {
         this.lokasiRuang = lokasiRuang;
     }
 
     public void setProdi(String prodi) {
         this.prodi = prodi;
     }
-    
     void inputawal(){
-        Scanner in=new Scanner(System.in);
-        System.out.println("Masukkan nama ruang anda : ");
-        setNamaRuang(in.nextLine());
-        System.out.println("Masukkan lokasi ruangan anda : ");
-        setLokasiRuang(in.nextInt());
-        System.out.println("Pilih program jurusan anda : ");
-        setProdi(in.nextLine());
+        
     }
-    
 }
