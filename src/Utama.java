@@ -7,11 +7,9 @@ import java.util.Scanner;
  * and open the template in the editor.
  */
 
-/**
- *
- * @author samsung
- */
-public class Utama extends IdentitasKelas {
+
+public class Utama extends IdentitasKelas{
+
     double luas;
     double luasrasio;
     private int panjang;
@@ -19,7 +17,28 @@ public class Utama extends IdentitasKelas {
     private int jumlahKursi;
     private int jumlahJendela;
     private int jumlahPintu;
+   
+    
+    public Utama (String namaRuang , String lokasiRuang){
+        this.namaRuang=namaRuang;
+        this.lokasiRuang=lokasiRuang;
+    }
+    public Utama(){
+        
+    }
 
+    
+    void setData(String namaRuang , String lokasiRuang){
+        this.namaRuang=namaRuang;
+        this.lokasiRuang=lokasiRuang;
+    }
+    
+    void setData(String namaRuang , String lokasiRuang, String prodi){
+        this.namaRuang=namaRuang;
+        this.lokasiRuang=lokasiRuang;
+        this.prodi=prodi;
+    }
+    
     public void setPanjang(int panjang) {
         this.panjang = panjang;
     }
@@ -61,11 +80,19 @@ public class Utama extends IdentitasKelas {
     }
     
     
-    
+    @Override
+    void inputawal(){
+        Scanner in=new Scanner(System.in);
+        System.out.println("Masukkan nama ruang anda : ");
+        super.setNamaRuang(in.nextLine());
+        System.out.println("Masukkan lokasi ruangan anda : ");
+        super.setLokasiRuang(in.nextLine());
+        System.out.println("Pilih program jurusan anda : ");
+        super.setProdi(in.nextLine());
+    }
+   
     
     void input(){
-        IdentitasKelas obj=new IdentitasKelas();
-        obj.inputawal();
         Scanner in = new Scanner (System.in);
         System.out.println("Panjang : ");
         setPanjang(in.nextInt());
@@ -88,7 +115,10 @@ public class Utama extends IdentitasKelas {
         return luas()/jumlahKursi;
     }
     
-    void tampil(){
+    void input(String panjang){
+        
+    }
+    void inputawal(String ruang){
         System.out.println("Nama ruang anda : "+getNamaRuang());
         System.out.println("Lokasi ruangan anda ada di : "+getLokasiRuang());
         System.out.println("Jurusan/ program studi pilihan anda adalah : "+getProdi());
@@ -98,37 +128,74 @@ public class Utama extends IdentitasKelas {
         System.out.println("Lebar yang anda inputkan : "+ getLebar());
     }
     
-    boolean analisisluasruang(){
+    boolean analisisbentukruang(){
         if(getPanjang()!= getLebar()){
-            System.out.println("Bentuk ruangan persegi panjang dan sesuai.");
+            System.out.println(outanalisisbentukruang());
+            return true;  
         }
         else{
-            System.out.println("Bentuk kelas persegi dan tidak sesuai.");
+            System.out.println(out1analisisbentukruang());
+           return false;
         }
+    }
+    public static boolean outanalisisbentukruang(){
+        System.out.println("luas ruang sesuai"); 
         return true;
+    }
+    public static boolean out1analisisbentukruang(){
+        System.out.println("luas ruang tidak sesuai");
+        return false;
     }
     
-    boolean analisisbentukruang(){
-        if(luasrasio > 0.5){
-            System.out.println("Luas rasio kelas anda sesuai.");
-        }
-        else{
-            System.out.println("Luas rasio kelas anda tidak sesuai");
-        }
-        return true;
-    }
+    
+    
     
     boolean analisisrasioruang(){
-        if(getJumlahPintu() >=2 && getJumlahJendela() >= 2){
-            System.out.println("Jumlah pintu dan jendela sesuai.");
-        }
-        else if(getJumlahPintu() >=2 && getJumlahJendela() <= 2){
-            System.out.println("Jumlah jendela sesuai, namun jendela tidak sesuai");
+        if(luasrasio > 0.5){
+            System.out.println(outanalisisrasioruang());
+           return true;
         }
         else{
-            System.out.println("Jumlah jendela dan pintu tidak sesuai.");
-        }
-        return true;
+            System.out.println(out1analisisrasioruang());
+             return false;   
+        }  
+    }
+    public static boolean outanalisisrasioruang(){
+      System.out.println("Luas rasio kelas sesuai."); 
+      return true;
+    }
+    public static boolean out1analisisrasioruang(){
+       System.out.println("luas rasio kelas tidak sesuai");
+        return false; 
     }
     
+    
+    
+    boolean analispintudanjendela(){
+        if(getJumlahPintu() >=2 && getJumlahJendela() >= 2){
+            System.out.println(outanalispintudanjendela());
+            return true;
+        }
+        else if(getJumlahPintu() >=2 && getJumlahJendela() <= 2){
+            System.out.println(out1analispintudanjendela());
+            return Boolean.FALSE;
+        }
+        else{
+            System.out.println(out2analispintudanjendela());
+            return false;
+        }
+    }
+    
+    public static boolean outanalispintudanjendela(){
+      System.out.println("Jumlah pintu dan jendela sesuai."); 
+      return true;
+    }
+    public static boolean out1analispintudanjendela(){
+       System.out.println("Jumlah jendela sesuai, namun jendela tidak sesuai");
+        return false; 
+    }
+      public static boolean out2analispintudanjendela(){
+       System.out.println("Jumlah jendela dan pintu tidak sesuai.");
+        return false; 
+    }
 }
