@@ -7,26 +7,19 @@ import java.util.Scanner;
  * and open the template in the editor.
  */
 
-/**
- *
- * @author samsung
- */
 public class Main {
     public static void main(String[] args){
-         int banyak;
-      Utama ruang[];
-      Scanner in = new Scanner (System.in);
-      System.out.println("Masukkan jumlah ruang : ");
-      banyak = in.nextInt();
-      ruang = new Utama[banyak];
-      for(int i=0;i<ruang.length;i++){
-          ruang[i] = new Utama();
-          ruang[i].input();
-          ruang[i].luas();
-          ruang[i].luasrasio();
-          ruang[i].tampil();
+         Call ruang=new Call();
+         
+          ruang.utama();
+          ruang.sarana();
+          ruang.kondisi();
+          ruang.kebersihan();
+          ruang.kondisikelas();
+          ruang.kenyamanan();
+          ruang.keamanan();
           
     }
-      
+     
 }
-}
+
