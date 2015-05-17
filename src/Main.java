@@ -11,6 +11,7 @@ public class Main {
     public static void main(String[] args){
          Call ruang=new Call();
          
+          ruang.pembuka();
           ruang.utama();
           ruang.sarana();
           ruang.kondisi();
