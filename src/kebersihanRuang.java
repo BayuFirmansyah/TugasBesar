@@ -11,13 +11,21 @@ import java.util.Scanner;
  *
  * @author the 12
  */
-public class kebersihanRuang {
+public class kebersihanRuang extends abstrax implements Inter {
     String lancar;
     
     private String SirkulasiUdara;
-    private int Pencahayan;
-    private int Kelembapan;
+    private int NilaiPencahayaan;
+    private int Kelembaban;
     private int Suhu;
+
+    public String getLancar() {
+        return lancar;
+    }
+
+    public void setLancar(String lancar) {
+        this.lancar = lancar;
+    }
 
     public String getSirkulasiUdara() {
         return SirkulasiUdara;
@@ -27,20 +35,20 @@ public class kebersihanRuang {
         this.SirkulasiUdara = SirkulasiUdara;
     }
 
-    public int getPencahayan() {
-        return Pencahayan;
+    public int getNilaiPencahayaan() {
+        return NilaiPencahayaan;
     }
 
-    public void setPencahayan(int Pencahayan) {
-        this.Pencahayan = Pencahayan;
+    public void setNilaiPencahayaan(int NilaiPencahayaan) {
+        this.NilaiPencahayaan = NilaiPencahayaan;
     }
 
-    public int getKelembapan() {
-        return Kelembapan;
+    public int getKelembaban() {
+        return Kelembaban;
     }
 
-    public void setKelembapan(int Kelembapan) {
-        this.Kelembapan = Kelembapan;
+    public void setKelembaban(int Kelembaban) {
+        this.Kelembaban = Kelembaban;
     }
 
     public int getSuhu() {
@@ -50,101 +58,85 @@ public class kebersihanRuang {
     public void setSuhu(int Suhu) {
         this.Suhu = Suhu;
     }
+
+   kebersihanRuang kls = new kebersihanRuang();
+    Scanner in = new Scanner(System.in);
+    int s = 0, ts = 0, kondisi;
+    
      
-    void inputawal2(){
+    @Override
+    public void inter(){
         Scanner in=new Scanner(System.in);
         System.out.println("kelancaran sirkulasi udara : ");
         setSirkulasiUdara(in.nextLine());
         System.out.println("nilai pencahayan : ");
-        setPencahayan(in.nextInt());
+        setNilaiPencahayaan(in.nextInt());
         System.out.println("nilai kelembapan : ");
-        setKelembapan(in.nextInt());
+        setKelembaban(in.nextInt());
         System.out.println("nilai suhu : ");
         setSuhu(in.nextInt());
     }
     
-    boolean analisissirkulasiudara(){
-        if(getSirkulasiUdara()== lancar){
-            System.out.println(outanalisissirkulasiudara());
-            return true;
+    
+    int CekKondisiKebersihan() {
+        int kon;
+        if ("Lancar".equalsIgnoreCase(kls.getSirkulasiUdara())) {
+            System.out.println("SirkulasiUdara : Lancar");
+            s++;
+        } else {
+            System.out.println("Tidak Lancar");
+            ts++;
         }
-        else{
-            System.out.println(out1analisissirkulasiudara());
-            return false;
+        if (kls.getNilaiPencahayaan() >= 250) {
+            if (kls.getNilaiPencahayaan() <= 350) {
+                System.out.println("NilaiPencahayaan : s");
+            }
+            s++;
+        } else {
+            System.out.println("Tidak s");
+            ts++;
         }
-    }
-    public static boolean outanalisissirkulasiudara(){
-       System.out.println("kelancaran sirkulasi udara sesuai.");
-       return true;
-    }
-    public static boolean out1analisissirkulasiudara(){
-     System.out.println("kelancaran sirkulasi udara tidak sesuai.");
-        return false;
-    }
-    
-    
-    
-    boolean analisispencahayaan(){
-        if(getPencahayan()>=250 &&getPencahayan()<=350){
-            System.out.println(outanalisispencahayaan());
-            return true;
+        if (kls.getKelembaban() >= 70) {
+            if (kls.getKelembaban() <= 80) {
+                System.out.println("Kelembaban : s");
+            }
+            s++;
+        } else {
+            System.out.println("Tidak s");
+            ts++;
         }
-        else{
-            System.out.println(out1analisispencahayaan());
-            return false;
+        
+        if (kls.getSuhu() >= 25) {
+            if (kls.getSuhu() <= 35) {
+                System.out.println("Suhu : s");
+            }
+            s++;
+        } else {
+            System.out.println("Tidak s");
+            ts++;
         }
-    }
-    public static boolean outanalisispencahayaan(){
-       System.out.println("nilai pencahayaan sesuai.");
-       return true;
-    }
-    public static boolean out1analisispencahayaan(){
-     System.out.println("nilai pencahayaan tidak sesuai");
-        return false;
-    }
-    
-    
-    
-    
-    boolean analisiskelembapan(){
-        if(getKelembapan()>=70 &&getKelembapan()<=80){
-            
-            System.out.println(outanalisiskelembapan());
-            return true;
+        if (s > ts) {
+            kon = 1;
+        } else {
+            kon = 0;
         }
-        else{
-            System.out.println(out1analisiskelembapan());
-            return false;
-        }
+        return s;
     }
-    public static boolean outanalisiskelembapan(){
-       System.out.println("nilai kelembapan sesuai.");
-       return true;
-    }
-    public static boolean out1analisiskelembapan(){
-     System.out.println("nilai kelembapan tidak sesuai.");
-        return false;
-    }
+   
     
-    
-    
-    
-    boolean analisissuhu(){
-        if(getSuhu()>=25 && getSuhu() <= 35){
-            System.out.println(outanalisissuhu());
-            return true;
-        }
-        else{
-            System.out.println(out1analisissuhu());
-            return false;
-        }
+    @Override
+    String exter(){
+      
+        System.out.println("Sirkulasi Udara : "+SirkulasiUdara);
+        System.out.println("Nilai Pencahayaan "+NilaiPencahayaan);
+        System.out.println("Kelembaban : "+Kelembaban);
+        System.out.println("Suhu : "+Suhu);
+ 
+        
+        
+        return null;
+        
     }
-    public static boolean outanalisissuhu(){
-       System.out.println("nilai suhu sesuai");
-       return true;
-    }
-    public static boolean out1analisissuhu(){
-     System.out.println("nilai suhu tidak sesuai.");
-        return false;
-    }
+
+   
 }
