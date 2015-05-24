@@ -10,12 +10,6 @@
  */
 public class Call {
     
-    void pembuka(){
-        buka1 qaz=new buka1();
-        buka2 qaz1=new buka2();
-        qaz.buka();
-        qaz1.buka();
-    }
                    
     
     void utama(){
@@ -24,80 +18,50 @@ public class Call {
         qaz.input();
         qaz.luas();
         qaz.luasrasio();
-        qaz.inputawal();
-        qaz.analisisbentukruang();
-        qaz.analisisrasioruang();
-        qaz.analispintudanjendela();
+        qaz.output();
     }
     
-    void sarana(){
+    void saranaUtama(){
         SaranaUtama qaz  = new SaranaUtama();
         qaz.masuk();
-        qaz.Steker();
-        qaz.PosisiSteker();
-        qaz.KabelLCD();
-        qaz.PosisiKabelLCD();
-        qaz.Lampu();
-        qaz.kondisiLampu();
-        qaz.posisiLampu();
-        qaz.KipasAngin();
-        qaz.posisiKipasAngin();
-        qaz.AC();
-        qaz.posisiAC();
-        qaz.SSID();
-        qaz.CCTV();
-        qaz.PosisiCCTV();
+        qaz.CekKondisiSarana();
+        qaz.output();
+        
 }
+     
     
-    void kondisi(){
-        kondisiKelas exe = new kondisiKelas();
-        exe.inputawal4();
-        exe.analisiskebersihan1();
-        exe.analisiskebersihan2();
-        exe.analisiskebersiahan3();
-        exe.analisiskebersihan4();
-        exe.analisiskebersiahan5();         
-    }
-    
-    
-    void kebersihan(){
-        kebersihanRuang qwe=new kebersihanRuang();
-        qwe.inputawal2();
-        qwe.analisissirkulasiudara();
-        qwe.analisispencahayaan();
-        qwe.analisiskelembapan();
-        qwe.analisissuhu();
-    }
-    
-    
-    void kondisikelas(){
-        kondisiKelas qaz=new kondisiKelas();
-        qaz.inputawal4();
-        qaz.analisiskebersihan1();
-        qaz.analisiskebersihan2();
-        qaz.analisiskebersiahan3();
-        qaz.analisiskebersihan4();
-        qaz.analisiskebersiahan5();
-    }
-    
-    
-    void kenyamanan(){
-        kenyamananRuang qaz=new kenyamananRuang();
-        qaz.inputawal3();
-        qaz.analisiskebisingan();
-        qaz.analisisbau();
-        qaz.analisiskebocoran();
-        qaz.analisiskerusakan();
+    void kondisiRuang(){
+        kondisiRuang qaz=new kondisiRuang();
+        qaz.inter();
+        qaz.CekKondisiLingkungan();
+        qaz.exter();
         
     }
     
     
-    void keamanan(){
+    void kebersihanRuang(){
+        kebersihanRuang qaz=new kebersihanRuang();
+        qaz.inter();
+        qaz.CekKondisiKebersihan();
+        qaz.exter();
+        
+    }
+    
+    
+    void kenyamananRuang(){
+        kenyamananRuang qaz=new kenyamananRuang();
+        qaz.inter();
+        qaz.CekKondisiKenyamanan();
+        qaz.exter();
+        
+    }
+    
+    
+    void keamananRuang(){
         keamananRuang qaz=new keamananRuang();
-        qaz.inputawal2();
-        qaz.analisiskekokohan();
-        qaz.analisiskuncipintudanjendela();
-        qaz.analisiskeamananruang();
+        qaz.inter();
+        qaz.CekKondisiKeamanan();
+        qaz.exter();
     }
 
 }
