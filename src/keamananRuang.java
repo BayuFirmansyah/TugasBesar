@@ -11,12 +11,12 @@ import java.util.Scanner;
  *
  * @author the 12
  */
-public class keamananRuang {
-    String kokoh,ada,aman;
+public class keamananRuang extends abstrax implements Inter{
     
-    private String Kekokohan;
-    private String KunciPintuJendela;
-    private String Bahaya;
+    
+   private String Kekokohan;
+   private String KunciPintuJendela;
+   private String Bahaya;
 
     public String getKekokohan() {
         return Kekokohan;
@@ -41,8 +41,14 @@ public class keamananRuang {
     public void setBahaya(String Bahaya) {
         this.Bahaya = Bahaya;
     }
+
+   keamananRuang kls = new keamananRuang();
+    Scanner in = new Scanner(System.in);
+    int s = 0, ts = 0, kondisi;
+   
     
-    void inputawal2(){
+  @Override  
+    public void inter(){
         Scanner in=new Scanner(System.in);
         System.out.println("masukan kekokohan : ");
         setKekokohan(in.nextLine());
@@ -52,70 +58,50 @@ public class keamananRuang {
         setBahaya(in.nextLine());
     }
     
-      boolean analisiskekokohan(){
-        if(getKekokohan()== kokoh){
-            System.out.println(outanalisiskekokohan());
-            return true;
-        }
-        else{
-            System.out.println(out1analisiskekokohan());
-            return false;
-        }
+    
+     int CekKondisiKeamanan() {
+        int kon;
         
-      }
-      
-      public static boolean outanalisiskekokohan(){
-          System.out.println("kondisi ruang sesuai.");
-          return true;  
-      }
-       public static boolean out1analisiskekokohan(){
-          System.out.println("kondisi ruang tidak sesuai"); 
-        return false;
-       }
-       
-       
-      
-      boolean analisiskuncipintudanjendela(){
-        if(getKunciPintuJendela()== ada){
-            System.out.println(outanalisiskuncipintudanjendela());
-            return true;
+     if ("s".equalsIgnoreCase(kls.getKekokohan())) {
+            System.out.println("Kekokohan : s");
+            s++;
+        } else {
+            System.out.println("Tidak s");
+            ts++;
         }
-        else{
-            System.out.println(out1analisiskuncipintudanjendela());
-            return true;
+        if ("s".equalsIgnoreCase(kls.getKunciPintuJendela())) {
+            System.out.println("KunciPintuJendela : s");
+            s++;
+        } else {
+            System.out.println("Tidak s");
+            ts++;
         }
-      }
-      public static boolean outanalisiskuncipintudanjendela(){
-          System.out.println("kondisi ruang sesuai.");
-          return true;  
-      }
-       public static boolean out1analisiskuncipintudanjendela(){
-          System.out.println("kondisi ruang tidak sesuai"); 
-        return false;
-       }
-       
-       
-       
-      
-      boolean analisiskeamananruang(){
-        if(getBahaya()== aman){
-            System.out.println(outanalisiskeamananruang());
-            return true;
+        if ("s".equalsIgnoreCase(kls.getBahaya())) {
+            System.out.println("Bahaya : s");
+            s++;
+        } else {
+            System.out.println("Tidak s");
+            ts++;
         }
-        else{
-            System.out.println(outanalisiskeamananruang());
-            return false;
-              
-        }
-        
-      }
-      
-      public static boolean outanalisiskeamananruang(){
-          System.out.println("kondisi ruang sesuai.");
-          return true;  
-      }
-       public static boolean out1analisiskeamananruang(){
-          System.out.println("kondisi ruang tidak sesuai"); 
-        return false;
+        if (s == 1) {
+            System.out.println("s");
+            kon = 1;
+        } else {
+            System.out.println("Tidak s");
+            kon = 0;
+        }  
+        return s;
+}  
+       
+       String exter(){
+          
+        System.out.println("Kekokohan : "+Kekokohan);
+        System.out.println("Kunci Pintu dan Jendela : "+KunciPintuJendela);
+        System.out.println("Bahaya : "+Bahaya); 
+
+       
+           
+        return null;
+           
        }
 }
