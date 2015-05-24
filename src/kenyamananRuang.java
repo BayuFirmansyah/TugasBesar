@@ -11,14 +11,14 @@ import java.util.Scanner;
  *
  * @author the 12
  */
-public class kenyamananRuang {
-    
-    String bising,bau,bocor,rusak;
+public class kenyamananRuang extends abstrax implements Inter{
+   
     
     private String Kebisingan;
     private String Bau;
     private String Kebocoran;
     private String Kerusakan;
+    private String Keausan;
 
     public String getKebisingan() {
         return Kebisingan;
@@ -52,7 +52,23 @@ public class kenyamananRuang {
         this.Kerusakan = Kerusakan;
     }
 
-    void inputawal3(){
+    public String getKeausan() {
+        return Keausan;
+    }
+
+    public void setKeausan(String Keausan) {
+        this.Keausan = Keausan;
+    }
+    
+
+    kenyamananRuang kls = new kenyamananRuang();
+    Scanner in = new Scanner(System.in);
+    int s = 0, ts = 0, kondisi;
+    
+    
+    
+    @Override
+    public void inter(){
         Scanner in=new Scanner(System.in);
         System.out.println("masukan kebisingan : ");
         setKebisingan(in.nextLine());
@@ -64,92 +80,56 @@ public class kenyamananRuang {
         setKerusakan(in.nextLine());
     }
     
-      boolean analisiskebisingan(){
-        if(getKebisingan()!= bising){
-            System.out.println(outanalisiskebisingan ());
-            return true;
+     int CekKondisiKenyamanan() {
+        int kon;
+        if ("s".equalsIgnoreCase(kls.getKebisingan())) {
+            System.out.println("Kebisingan : s");
+            s++;
+        } else {
+            System.out.println("Tidak s");
+            ts++;
         }
-        else{
-            System.out.println(out1analisiskebisingan ());
-            return false;
+        if ("s".equalsIgnoreCase(kls.getBau())) {
+            System.out.println("Bau : s");
+            s++;
+        } else {
+            System.out.println("Tidak s");
+            ts++;
         }
+        if ("s".equalsIgnoreCase(kls.getKerusakan())) {
+            System.out.println("Kerusakan : s");
+            s++;
+        } else {
+            System.out.println("Tidak s");
+            ts++;
         }
-      public static boolean outanalisiskebisingan (){
-          System.out.println("kondisi ruang sesuai.");
-          return true;  
-      }
-       public static boolean out1analisiskebisingan (){
-          System.out.println("kondisi ruang tidak sesuai"); 
-        return false;
-       }
+        if ("s".equalsIgnoreCase(kls.getKeausan())) {
+            System.out.println("Keausan : s");
+            s++;
+        } else {
+            System.out.println("Tidak s");
+            ts++;
+        }
+        if (s == 1) {
+            System.out.println("s");
+            kon = 1;
+        } else {
+            System.out.println("Tidak s");
+            kon = 0;
+        }
+        return s;
+     }
+     
+       String exter(){
       
-       
-       
-       
-      boolean analisisbau(){
-        if(getBau()!= bau){
-            System.out.println(outanalisisbau());
-            return true;
-        }
-        else{
-            System.out.println(out1analisisbau());
-            return false;
-        }
-        }
-      
-      public static boolean outanalisisbau(){
-          System.out.println("kondisi ruang sesuai.");
-          return true;  
-      }
-       public static boolean out1analisisbau(){
-          System.out.println("kondisi ruang tidak sesuai"); 
-        return false;
-       }
-       
-       
-       
-       
-      
-      boolean analisiskebocoran(){
-        if(getKebocoran()!= bocor){
-            System.out.println(outanalisiskebocoran());
-            return true;
-        }
-        else{
-            System.out.println(out1analisiskebocoran());
-            return false;
-        }
-      }
-       
-      public static boolean outanalisiskebocoran(){
-          System.out.println("kondisi ruang sesuai.");
-          return true;  
-      }
-       public static boolean out1analisiskebocoran(){
-          System.out.println("kondisi ruang tidak sesuai"); 
-        return false;
-       }
-        
-       
-       
-       
-      boolean analisiskerusakan(){
-        if(getKerusakan()!= rusak){
-            System.out.println("kondisi ruang sesuai.");
-            return true;
-        }
-        else{
-            System.out.println("kondisi ruang tidak sesuai.");
-            return false;
-        }
-    }
-      
-      public static boolean outanalisiskerusakan(){
-          System.out.println("kondisi ruang sesuai.");
-          return true;  
-      }
-       public static boolean out1analisiskerusakan(){
-          System.out.println("kondisi ruang tidak sesuai"); 
-        return false;
+        System.out.println("Kebisingan : "+Kebisingan);
+        System.out.println("Bau : "+Bau);
+        System.out.println("Kebocoran : "+Kebocoran);
+        System.out.println("Kerusakan : "+Kerusakan);
+        System.out.println("Keausan : "+Keausan);
+           
+           
+           return null;
+            
        }
 }
