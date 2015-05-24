@@ -11,14 +11,13 @@ public class Main {
     public static void main(String[] args){
          Call ruang=new Call();
          
-          ruang.pembuka();
+          
           ruang.utama();
-          ruang.sarana();
-          ruang.kondisi();
-          ruang.kebersihan();
-          ruang.kondisikelas();
-          ruang.kenyamanan();
-          ruang.keamanan();
+          ruang.saranaUtama();
+          ruang.kondisiRuang();
+          ruang.kebersihanRuang();
+          ruang.kenyamananRuang();
+          ruang.keamananRuang();
           
     }
      
