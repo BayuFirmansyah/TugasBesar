@@ -28,11 +28,29 @@ public class Call {
         qaz.output();
         
 }
+    
+    void inputInter(){
+        keamananRuang qaz=new keamananRuang();
+        kebersihanRuang qwe=new kebersihanRuang();
+        kenyamananRuang iop=new kenyamananRuang();
+        kondisiRuang sds=new kondisiRuang();
+        qaz.inter();
+        qwe.inter();
+        iop.inter();
+        sds.inter();
+    
+        }
+    
+    void outputAbstrax(){
+        
+    }
+        
+    
      
     
     void kondisiRuang(){
         kondisiRuang qaz=new kondisiRuang();
-        qaz.inter();
+        
         qaz.CekKondisiLingkungan();
         qaz.exter();
         
@@ -41,7 +59,7 @@ public class Call {
     
     void kebersihanRuang(){
         kebersihanRuang qaz=new kebersihanRuang();
-        qaz.inter();
+        ;
         qaz.CekKondisiKebersihan();
         qaz.exter();
         
@@ -50,7 +68,7 @@ public class Call {
     
     void kenyamananRuang(){
         kenyamananRuang qaz=new kenyamananRuang();
-        qaz.inter();
+        
         qaz.CekKondisiKenyamanan();
         qaz.exter();
         
@@ -59,7 +77,7 @@ public class Call {
     
     void keamananRuang(){
         keamananRuang qaz=new keamananRuang();
-        qaz.inter();
+        
         qaz.CekKondisiKeamanan();
         qaz.exter();
     }
