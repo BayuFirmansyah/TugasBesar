@@ -1,3 +1,11 @@
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -9,7 +17,12 @@
  * @author the 12
  */
 public class GuiInput extends javax.swing.JFrame {
-
+  public Connection con; 
+    private String sql; // variabel "sql" digunakan menampung hasil query database
+    private Statement st; // object "st" dari class Statement
+    private ResultSet rs; // object "rs" dari class Resulset
+    private PreparedStatement ps; // object "ps" dari class PreparedStatement
+    private DefaultTableModel dtm; 
     /**
      * Creates new form keamanan
      */
@@ -31,6 +44,8 @@ public class GuiInput extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         jColorChooser1 = new javax.swing.JColorChooser();
         sliderPencahayaan2 = new javax.swing.JSlider();
+        jDialog1 = new javax.swing.JDialog();
+        jDialog2 = new javax.swing.JDialog();
         jPanel1 = new javax.swing.JPanel();
         tabbedKeamanan = new javax.swing.JTabbedPane();
         jTabbedPane2 = new javax.swing.JTabbedPane();
@@ -55,7 +70,6 @@ public class GuiInput extends javax.swing.JFrame {
         jLabel26 = new javax.swing.JLabel();
         cekLCDkBuruk3 = new javax.swing.JCheckBox();
         jLabel25 = new javax.swing.JLabel();
-        jLabel27 = new javax.swing.JLabel();
         jLabel28 = new javax.swing.JLabel();
         jLabel29 = new javax.swing.JLabel();
         jLabel30 = new javax.swing.JLabel();
@@ -92,6 +106,8 @@ public class GuiInput extends javax.swing.JFrame {
         cekCCTVBaik = new javax.swing.JCheckBox();
         cekCCTVBuruk = new javax.swing.JCheckBox();
         posisiCCTV = new javax.swing.JTextField();
+        simpanSarana = new javax.swing.JButton();
+        hapusSarana = new javax.swing.JButton();
         jTabbedPane5 = new javax.swing.JTabbedPane();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -105,6 +121,8 @@ public class GuiInput extends javax.swing.JFrame {
         cekKunciPintuJendelaTidak2 = new javax.swing.JCheckBox();
         cekBahayaAman2 = new javax.swing.JCheckBox();
         cekBahayaBahaya2 = new javax.swing.JCheckBox();
+        simpanKeamanan = new javax.swing.JButton();
+        hapusKeamanan = new javax.swing.JButton();
         jTabbedPane6 = new javax.swing.JTabbedPane();
         jScrollPane3 = new javax.swing.JScrollPane();
         jPanel6 = new javax.swing.JPanel();
@@ -119,6 +137,8 @@ public class GuiInput extends javax.swing.JFrame {
         cekSirkulasiTerhambat = new javax.swing.JCheckBox();
         sliderPencahayaan1 = new javax.swing.JSlider();
         sliderPencahayaan3 = new javax.swing.JSlider();
+        hapusKebersihan = new javax.swing.JButton();
+        simpanKebersihan = new javax.swing.JButton();
         jTabbedPane7 = new javax.swing.JTabbedPane();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
@@ -136,6 +156,7 @@ public class GuiInput extends javax.swing.JFrame {
         cekKebocoranTidak = new javax.swing.JCheckBox();
         cekKerusakanRusak = new javax.swing.JCheckBox();
         cekKerusakanTidak = new javax.swing.JCheckBox();
+        simpanKenyamanan = new javax.swing.JButton();
         jLayeredPane1 = new javax.swing.JLayeredPane();
         jScrollPane5 = new javax.swing.JScrollPane();
         jPanel13 = new javax.swing.JPanel();
@@ -157,6 +178,7 @@ public class GuiInput extends javax.swing.JFrame {
         cekDindingKotor = new javax.swing.JCheckBox();
         cekJendelaKotor = new javax.swing.JCheckBox();
         buttonSelesai = new javax.swing.JButton();
+        simpanKondisi = new javax.swing.JButton();
 
         jMenu1.setText("jMenu1");
 
@@ -168,6 +190,28 @@ public class GuiInput extends javax.swing.JFrame {
         sliderPencahayaan2.setAutoscrolls(true);
         sliderPencahayaan2.setDoubleBuffered(true);
         sliderPencahayaan2.setFocusable(false);
+
+        javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
+        jDialog1.getContentPane().setLayout(jDialog1Layout);
+        jDialog1Layout.setHorizontalGroup(
+            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        jDialog1Layout.setVerticalGroup(
+            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout jDialog2Layout = new javax.swing.GroupLayout(jDialog2.getContentPane());
+        jDialog2.getContentPane().setLayout(jDialog2Layout);
+        jDialog2Layout.setHorizontalGroup(
+            jDialog2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        jDialog2Layout.setVerticalGroup(
+            jDialog2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -266,9 +310,8 @@ public class GuiInput extends javax.swing.JFrame {
                                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(cekLCDkBuruk3)
                                     .addComponent(cekStopKontakBuruk2)))
-                            .addComponent(cekLCDBaik2))
-                        .addGap(118, 118, 118)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(cekLCDBaik2))))
+                .addContainerGap(78, Short.MAX_VALUE))
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -311,7 +354,7 @@ public class GuiInput extends javax.swing.JFrame {
         jPanel9Layout.setHorizontalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel9Layout.createSequentialGroup()
-                .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, 448, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 40, Short.MAX_VALUE))
         );
         jPanel9Layout.setVerticalGroup(
@@ -323,8 +366,6 @@ public class GuiInput extends javax.swing.JFrame {
 
         jLabel25.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
         jLabel25.setText("Lampu");
-
-        jLabel27.setText("Jumlah Kabel LCD");
 
         jLabel28.setText("Jumlah Kabel Lampu");
 
@@ -470,6 +511,20 @@ public class GuiInput extends javax.swing.JFrame {
             }
         });
 
+        simpanSarana.setText("Simpan");
+        simpanSarana.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                simpanSaranaActionPerformed(evt);
+            }
+        });
+
+        hapusSarana.setText("hapus");
+        hapusSarana.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                hapusSaranaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
@@ -501,27 +556,34 @@ public class GuiInput extends javax.swing.JFrame {
                                         .addGap(18, 18, 18)
                                         .addComponent(jumlahLampu, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(jPanel8Layout.createSequentialGroup()
-                                .addComponent(jLabel30, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
                                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(cekKipasAnginBaik)
-                                    .addComponent(posisiLampu, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jumlahKipasAngin, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(posisiKipasAngin, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jumlahAC, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(cekACBaik)
-                                    .addComponent(posisiAC, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(SSID, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(Bandwith, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jumlahCCTV, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(cekCCTVBaik)
-                                    .addComponent(posisiCCTV, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(38, 38, 38)
-                                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(cekKipasAnginburuk)
-                                    .addComponent(cekACBuruk)
-                                    .addComponent(cekCCTVBuruk))))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                    .addGroup(jPanel8Layout.createSequentialGroup()
+                                        .addComponent(jLabel30, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(cekKipasAnginBaik)
+                                            .addComponent(posisiLampu, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jumlahKipasAngin, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(posisiKipasAngin, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jumlahAC, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(cekACBaik)
+                                            .addComponent(posisiAC, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(SSID, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(Bandwith, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jumlahCCTV, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(cekCCTVBaik)
+                                            .addComponent(posisiCCTV, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(38, 38, 38))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
+                                        .addComponent(hapusSarana)
+                                        .addGap(18, 18, 18)))
+                                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(simpanSarana)
+                                    .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(cekKipasAnginburuk)
+                                        .addComponent(cekACBuruk)
+                                        .addComponent(cekCCTVBuruk)))))
+                        .addContainerGap(263, Short.MAX_VALUE))))
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -539,12 +601,7 @@ public class GuiInput extends javax.swing.JFrame {
                             .addComponent(jLabel41, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel42, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel43, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(0, 168, Short.MAX_VALUE))
-            .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel8Layout.createSequentialGroup()
-                    .addGap(166, 166, 166)
-                    .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(309, Short.MAX_VALUE)))
+                .addGap(0, 172, Short.MAX_VALUE))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -621,12 +678,11 @@ public class GuiInput extends javax.swing.JFrame {
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel43, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(posisiCCTV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(219, Short.MAX_VALUE))
-            .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel8Layout.createSequentialGroup()
-                    .addGap(311, 311, 311)
-                    .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(1184, Short.MAX_VALUE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(simpanSarana)
+                    .addComponent(hapusSarana))
+                .addGap(119, 119, 119))
         );
 
         jScrollPane1.setViewportView(jPanel8);
@@ -679,6 +735,20 @@ public class GuiInput extends javax.swing.JFrame {
             }
         });
 
+        simpanKeamanan.setText("simpan");
+        simpanKeamanan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                simpanKeamananActionPerformed(evt);
+            }
+        });
+
+        hapusKeamanan.setText("hapus");
+        hapusKeamanan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                hapusKeamananActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
         jPanel11.setLayout(jPanel11Layout);
         jPanel11Layout.setHorizontalGroup(
@@ -702,8 +772,13 @@ public class GuiInput extends javax.swing.JFrame {
                         .addGap(58, 58, 58)
                         .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(cekBahayaBahaya2)
-                            .addComponent(cekKunciPintuJendelaTidak2))))
-                .addContainerGap(282, Short.MAX_VALUE))
+                            .addComponent(cekKunciPintuJendelaTidak2)))
+                    .addGroup(jPanel11Layout.createSequentialGroup()
+                        .addGap(64, 64, 64)
+                        .addComponent(hapusKeamanan)
+                        .addGap(18, 18, 18)
+                        .addComponent(simpanKeamanan)))
+                .addContainerGap(258, Short.MAX_VALUE))
         );
         jPanel11Layout.setVerticalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -723,7 +798,11 @@ public class GuiInput extends javax.swing.JFrame {
                     .addComponent(jLabel57, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cekBahayaAman2)
                     .addComponent(cekBahayaBahaya2))
-                .addGap(0, 1353, Short.MAX_VALUE))
+                .addGap(118, 118, 118)
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(simpanKeamanan)
+                    .addComponent(hapusKeamanan))
+                .addGap(0, 1212, Short.MAX_VALUE))
         );
 
         jScrollPane2.setViewportView(jPanel11);
@@ -736,7 +815,7 @@ public class GuiInput extends javax.swing.JFrame {
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 349, Short.MAX_VALUE)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 367, Short.MAX_VALUE)
         );
 
         jTabbedPane5.addTab("INPUT", jPanel4);
@@ -795,6 +874,20 @@ public class GuiInput extends javax.swing.JFrame {
         sliderPencahayaan3.setDoubleBuffered(true);
         sliderPencahayaan3.setFocusable(false);
 
+        hapusKebersihan.setText("hapus");
+        hapusKebersihan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                hapusKebersihanActionPerformed(evt);
+            }
+        });
+
+        simpanKebersihan.setText("simpan");
+        simpanKebersihan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                simpanKebersihanActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
@@ -804,25 +897,33 @@ public class GuiInput extends javax.swing.JFrame {
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel45, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel7Layout.createSequentialGroup()
-                                .addComponent(cekSirkulasiLancar)
+                                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel45, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(cekSirkulasiLancar)
+                                .addGap(66, 66, 66)
                                 .addComponent(cekSirkulasiTerhambat))
-                            .addComponent(sliderPencahayaan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(sliderPencahayaan3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(sliderPencahayaan1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(78, 78, 78)
+                                .addComponent(sliderPencahayaan, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(84, 84, 84))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
-                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(sliderPencahayaan3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
-                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(sliderPencahayaan1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(84, 84, 84))
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(hapusKebersihan)
+                        .addGap(18, 18, 18)
+                        .addComponent(simpanKebersihan)
+                        .addGap(88, 88, 88))))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -835,20 +936,24 @@ public class GuiInput extends javax.swing.JFrame {
                     .addComponent(cekSirkulasiTerhambat))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel8)
-                    .addComponent(sliderPencahayaan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(sliderPencahayaan, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8))
+                .addGap(31, 31, 31)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addComponent(jLabel9)
                         .addGap(43, 43, 43)
                         .addComponent(jLabel10)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addComponent(sliderPencahayaan3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(sliderPencahayaan1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(212, 212, 212))))
+                        .addGap(54, 54, 54)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(hapusKebersihan)
+                            .addComponent(simpanKebersihan))
+                        .addGap(135, 135, 135))))
         );
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
@@ -939,6 +1044,13 @@ public class GuiInput extends javax.swing.JFrame {
             }
         });
 
+        simpanKenyamanan.setText("simpan");
+        simpanKenyamanan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                simpanKenyamananActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
         jPanel12.setLayout(jPanel12Layout);
         jPanel12Layout.setHorizontalGroup(
@@ -947,26 +1059,27 @@ public class GuiInput extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel47, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel12Layout.createSequentialGroup()
-                        .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel48, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE)
-                            .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel15, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE)
-                                .addComponent(jLabel16, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addGap(40, 40, 40)
-                        .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(simpanKenyamanan)
+                        .addGroup(jPanel12Layout.createSequentialGroup()
+                            .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jLabel48, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE)
+                                .addComponent(jLabel17, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE)
+                                .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGap(40, 40, 40)
                             .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(cekKebisinganBising)
-                                .addComponent(cekBauBau)
-                                .addComponent(cekKebocoranBocor, javax.swing.GroupLayout.Alignment.TRAILING))
-                            .addComponent(cekKerusakanRusak, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addGap(77, 77, 77)
-                        .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cekKebisinganTidak)
-                            .addComponent(cekBauTidak)
-                            .addComponent(cekKebocoranTidak)
-                            .addComponent(cekKerusakanTidak))))
+                                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(cekKebisinganBising)
+                                    .addComponent(cekBauBau)
+                                    .addComponent(cekKebocoranBocor, javax.swing.GroupLayout.Alignment.TRAILING))
+                                .addComponent(cekKerusakanRusak, javax.swing.GroupLayout.Alignment.TRAILING))
+                            .addGap(77, 77, 77)
+                            .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(cekKebisinganTidak)
+                                .addComponent(cekBauTidak)
+                                .addComponent(cekKebocoranTidak)
+                                .addComponent(cekKerusakanTidak)))))
                 .addContainerGap(265, Short.MAX_VALUE))
         );
         jPanel12Layout.setVerticalGroup(
@@ -993,7 +1106,9 @@ public class GuiInput extends javax.swing.JFrame {
                     .addComponent(jLabel48)
                     .addComponent(cekKerusakanRusak)
                     .addComponent(cekKerusakanTidak))
-                .addGap(0, 1317, Short.MAX_VALUE))
+                .addGap(78, 78, 78)
+                .addComponent(simpanKenyamanan)
+                .addGap(0, 1216, Short.MAX_VALUE))
         );
 
         jScrollPane4.setViewportView(jPanel12);
@@ -1006,7 +1121,7 @@ public class GuiInput extends javax.swing.JFrame {
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 349, Short.MAX_VALUE)
+            .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 367, Short.MAX_VALUE)
         );
 
         jTabbedPane7.addTab("INPUT", jPanel3);
@@ -1104,6 +1219,18 @@ public class GuiInput extends javax.swing.JFrame {
         });
 
         buttonSelesai.setText("SELESAI");
+        buttonSelesai.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonSelesaiActionPerformed(evt);
+            }
+        });
+
+        simpanKondisi.setText("simpan");
+        simpanKondisi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                simpanKondisiActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
         jPanel13.setLayout(jPanel13Layout);
@@ -1137,16 +1264,18 @@ public class GuiInput extends javax.swing.JFrame {
                                     .addComponent(cekPintuKotor)
                                     .addComponent(cekJendelaKotor)
                                     .addComponent(cekLantaiKotor))))
-                        .addContainerGap(302, Short.MAX_VALUE))
+                        .addContainerGap(338, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel13Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGap(0, 247, Short.MAX_VALUE)
                         .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel13Layout.createSequentialGroup()
                                 .addComponent(jButton1)
                                 .addGap(158, 158, 158))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel13Layout.createSequentialGroup()
+                                .addComponent(simpanKondisi)
+                                .addGap(18, 18, 18)
                                 .addComponent(buttonSelesai)
-                                .addGap(230, 230, 230))))))
+                                .addGap(282, 282, 282))))))
         );
         jPanel13Layout.setVerticalGroup(
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1179,7 +1308,9 @@ public class GuiInput extends javax.swing.JFrame {
                     .addComponent(cekJendelaBersih)
                     .addComponent(cekJendelaKotor))
                 .addGap(60, 60, 60)
-                .addComponent(buttonSelesai)
+                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(buttonSelesai)
+                    .addComponent(simpanKondisi))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 1107, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addGap(89, 89, 89))
@@ -1195,7 +1326,7 @@ public class GuiInput extends javax.swing.JFrame {
         );
         jLayeredPane1Layout.setVerticalGroup(
             jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 375, Short.MAX_VALUE)
+            .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 393, Short.MAX_VALUE)
         );
         jLayeredPane1.setLayer(jScrollPane5, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
@@ -1211,7 +1342,7 @@ public class GuiInput extends javax.swing.JFrame {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(tabbedKeamanan, javax.swing.GroupLayout.PREFERRED_SIZE, 384, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(tabbedKeamanan, javax.swing.GroupLayout.PREFERRED_SIZE, 402, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -1235,10 +1366,6 @@ public class GuiInput extends javax.swing.JFrame {
     private void cekDindingBersihActionPerformed(java.awt.event.ActionEvent evt) {                                                 
     cekDindingKotor.setSelected(false);        // TODO add your handling code here:
     }                                                
-
-    private void ComboBoxKekokohanActionPerformed(java.awt.event.ActionEvent evt) {                                                  
-        // TODO add your handling code here:
-    }                                                 
 
     private void posisiCCTVActionPerformed(java.awt.event.ActionEvent evt) {                                           
         // TODO add your handling code here:
@@ -1412,6 +1539,194 @@ public class GuiInput extends javax.swing.JFrame {
     cekJendelaBersih.setSelected(false);        // TODO add your handling code here:
     }                                               
 
+    private void buttonSelesaiActionPerformed(java.awt.event.ActionEvent evt) {                                              
+        GuiOutput qaz=new GuiOutput();
+        qaz.setVisible(true);        // TODO add your handling code here:
+    }                                             
+
+    private void simpanSaranaActionPerformed(java.awt.event.ActionEvent evt) {                                             
+      try {
+             String sql="insert into sarana utama values('"+jumlahAC.getText()
+                     +"','"+jumlahCCTV.getText()
+                     +"','"+jumlahKipasAngin.getText()
+                     +"','"+jumlahLCD2.getText()
+                     +"','"+jumlahLampu.getText()
+                     +"','"+jumlahStopKontak2.getText()
+                     +"','"+cekACBaik.getSelectedObjects()
+                     +"','"+cekACBuruk.getSelectedObjects()
+                     +"','"+cekCCTVBaik.getSelectedObjects()
+                     +"','"+cekCCTVBuruk.getSelectedObjects()
+                     +"','"+cekKipasAnginBaik.getSelectedObjects()
+                     +"','"+cekKipasAnginburuk.getSelectedObjects()
+                     +"','"+cekLCDBaik2.getSelectedObjects()
+                     +"','"+cekLCDkBuruk3.getSelectedObjects()
+                     +"','"+cekLampuBaik.getSelectedObjects()
+                     +"','"+cekLampuBuruk1.getSelectedObjects()
+                     +"','"+cekStopKontakBaik2.getSelectedObjects()
+                     +"','"+cekStopKontakBuruk2.getSelectedObjects()
+                     +"','"+posisiAC.getText()
+                     +"','"+posisiCCTV.getText()
+                     +"','"+posisiKipasAngin.getText()
+                     +"','"+posisiLCD2.getText()
+                     +"','"+posisiLampu.getText()
+                     +"','"+posisiStopKontak2.getText()+"')"; 
+            st=con.createStatement(); 
+            st.executeUpdate(sql); 
+            JOptionPane.showMessageDialog(null, "DATA SUKSES TERSIMPAN"); 
+           
+           } catch (Exception e)
+           {
+            JOptionPane.showMessageDialog(null, "DATA GAGAL TERSIMPAN"); 
+//indikator yang sitampilkan pada comand dialog jika data gagal tersimpan
+            } // TODO add your handling code here:
+    }                                            
+
+    private void hapusSaranaActionPerformed(java.awt.event.ActionEvent evt) {                                            
+try{
+   
+    jumlahAC.setText("");
+    jumlahCCTV.setText("");
+    jumlahKipasAngin.setText("");
+    jumlahLCD2.setText("");
+    jumlahLampu.setText("");
+    jumlahStopKontak2.setText("");
+    /*cekACBaik.setText("");
+    cekACBuruk.setText("");
+    cekCCTVBaik.setText("");
+    cekCCTVBuruk.setText("");
+    cekKipasAnginBaik.setText("");
+    cekKipasAnginburuk.setText("");
+    cekLCDBaik2.setText("");
+    cekLCDkBuruk3.setText("");
+    cekLampuBaik.setText("");
+    cekLampuBuruk1.setText("");
+    cekStopKontakBaik2.setText("");
+    cekStopKontakBuruk2.setText("");*/
+    posisiAC.setText("");
+    posisiCCTV.setText("");
+    posisiKipasAngin.setText("");
+    posisiLCD2.setText("");
+    posisiLampu.setText("");
+    posisiStopKontak2.setText("");
+    SSID.setText("");
+    Bandwith.setText("");
+    
+    
+    
+}catch (Exception e){
+}        // TODO add your handling code here:
+    }                                           
+
+    private void ComboBoxKekokohanActionPerformed(java.awt.event.ActionEvent evt) {                                                  
+        // TODO add your handling code here:
+    }                                                 
+
+    private void hapusKeamananActionPerformed(java.awt.event.ActionEvent evt) {                                              
+try{
+   /*
+    cekKunciPintuJendela2.setText("");
+    cekKunciPintuJendelaTidak2.setText("");
+    cekBahayaAman2.setText("");
+    cekBahayaBahaya2.setText("");*/
+}catch (Exception e){
+}        // TODO add your handling code here:
+    }                                             
+
+    private void simpanKeamananActionPerformed(java.awt.event.ActionEvent evt) {                                               
+try {
+             String sql="insert into keamanan ruang values('"+ComboBoxKekokohan2.getActionCommand()
+                                             +"','"+cekKunciPintuJendela2.getSelectedObjects()
+                     +"','"+cekKunciPintuJendelaTidak2.getSelectedObjects()
+                     +"','"+cekBahayaAman2.getSelectedObjects()
+                     +"','"+cekBahayaBahaya2.getSelectedObjects()+"')"; 
+            st=con.createStatement(); 
+            st.executeUpdate(sql); 
+            JOptionPane.showMessageDialog(null, "DATA SUKSES TERSIMPAN"); 
+           
+           } catch (Exception e)
+           {
+            JOptionPane.showMessageDialog(null, "DATA GAGAL TERSIMPAN"); 
+//indikator yang sitampilkan pada comand dialog jika data gagal tersimpan
+            }        // TODO add your handling code here:
+    }                                              
+
+    private void hapusKebersihanActionPerformed(java.awt.event.ActionEvent evt) {                                                
+        try{
+   
+    cekSirkulasiLancar.setActionCommand("");
+    cekSirkulasiTerhambat.setActionCommand("");
+    
+}catch (Exception e){
+}        // TODO add your handling code here:
+     // TODO add your handling code here:
+    }                                               
+
+    private void simpanKebersihanActionPerformed(java.awt.event.ActionEvent evt) {                                                 
+       try {
+             String sql="insert into kebersihan ruang values('"+cekSirkulasiLancar.getSelectedObjects()
+                                             +"','"+cekSirkulasiTerhambat.getSelectedObjects()
+                     +"','"+sliderPencahayaan.getAutoscrolls()
+                     +"','"+sliderPencahayaan1.getAutoscrolls()
+                     +"','"+sliderPencahayaan3.getAutoscrolls()+"')"; 
+            st=con.createStatement(); 
+            st.executeUpdate(sql); 
+            JOptionPane.showMessageDialog(null, "DATA SUKSES TERSIMPAN"); 
+           
+           } catch (Exception e)
+           {
+            JOptionPane.showMessageDialog(null, "DATA GAGAL TERSIMPAN"); 
+//indikator yang sitampilkan pada comand dialog jika data gagal tersimpan
+            }  // TODO add your handling code here:
+    }                                                
+
+    private void simpanKenyamananActionPerformed(java.awt.event.ActionEvent evt) {                                                 
+       try {
+             String sql="insert into kenyaman ruang values('"+cekKebisinganBising.getSelectedObjects()
+                                             +"','"+cekKebisinganTidak.getSelectedObjects()
+                     +"','"+cekBauBau.getSelectedObjects()
+                     +"','"+cekBauTidak.getSelectedObjects()
+                     +"','"+cekKebocoranBocor.getSelectedObjects()
+                     +"','"+cekKebocoranTidak.getSelectedObjects()
+                     +"','"+cekKerusakanRusak.getSelectedObjects()
+                     +"','"+cekKerusakanTidak.getSelectedObjects()
+                     
+                     
+                    +"')"; 
+            st=con.createStatement(); 
+            st.executeUpdate(sql); 
+            JOptionPane.showMessageDialog(null, "DATA SUKSES TERSIMPAN"); 
+           
+           } catch (Exception e)
+           {
+            JOptionPane.showMessageDialog(null, "DATA GAGAL TERSIMPAN"); 
+//indikator yang sitampilkan pada comand dialog jika data gagal tersimpan
+            } // TODO add your handling code here:
+    }                                                
+
+    private void simpanKondisiActionPerformed(java.awt.event.ActionEvent evt) {                                              
+       try {
+             String sql="insert into kondisi ruang values('"+cekLantaiBersih.getSelectedObjects()
+                                             +"','"+cekLantaiKotor.getSelectedObjects()
+                     +"','"+cekDindingBersih.getSelectedObjects()
+                     +"','"+cekDindingKotor.getSelectedObjects()
+                     +"','"+cekAtapBersih.getSelectedObjects()
+                     +"','"+cekAtapKotor.getSelectedObjects()
+                     +"','"+cekPintuBersih.getSelectedObjects()
+                     +"','"+cekPintuKotor.getSelectedObjects()
+                     
+                     
+                    +"')"; 
+            st=con.createStatement(); 
+            st.executeUpdate(sql); 
+            JOptionPane.showMessageDialog(null, "DATA SUKSES TERSIMPAN"); 
+           
+           } catch (Exception e)
+           {
+            JOptionPane.showMessageDialog(null, "DATA GAGAL TERSIMPAN"); 
+//indikator yang sitampilkan pada comand dialog jika data gagal tersimpan
+            } // TODO add your handling code here:
+    }                                             
+
     /**
      * @param args the command line arguments
      */
@@ -1488,8 +1803,13 @@ public class GuiInput extends javax.swing.JFrame {
     private javax.swing.JCheckBox cekSirkulasiTerhambat;
     private javax.swing.JCheckBox cekStopKontakBaik2;
     private javax.swing.JCheckBox cekStopKontakBuruk2;
+    private javax.swing.JButton hapusKeamanan;
+    private javax.swing.JButton hapusKebersihan;
+    private javax.swing.JButton hapusSarana;
     private javax.swing.JButton jButton1;
     private javax.swing.JColorChooser jColorChooser1;
+    private javax.swing.JDialog jDialog1;
+    private javax.swing.JDialog jDialog2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel14;
@@ -1505,7 +1825,6 @@ public class GuiInput extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
-    private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
@@ -1574,6 +1893,11 @@ public class GuiInput extends javax.swing.JFrame {
     private javax.swing.JTextField posisiLCD2;
     private javax.swing.JTextField posisiLampu;
     private javax.swing.JTextField posisiStopKontak2;
+    private javax.swing.JButton simpanKeamanan;
+    private javax.swing.JButton simpanKebersihan;
+    private javax.swing.JButton simpanKenyamanan;
+    private javax.swing.JButton simpanKondisi;
+    private javax.swing.JButton simpanSarana;
     private javax.swing.JSlider sliderPencahayaan;
     private javax.swing.JSlider sliderPencahayaan1;
     private javax.swing.JSlider sliderPencahayaan2;
