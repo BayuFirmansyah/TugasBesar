@@ -156,6 +156,7 @@ public class GuiInput extends javax.swing.JFrame {
         cekPintuKotor = new javax.swing.JCheckBox();
         cekDindingKotor = new javax.swing.JCheckBox();
         cekJendelaKotor = new javax.swing.JCheckBox();
+        buttonSelesai = new javax.swing.JButton();
 
         jMenu1.setText("jMenu1");
 
@@ -198,10 +199,25 @@ public class GuiInput extends javax.swing.JFrame {
         });
 
         cekStopKontakBaik2.setText("Baik");
+        cekStopKontakBaik2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cekStopKontakBaik2ActionPerformed(evt);
+            }
+        });
 
         cekStopKontakBuruk2.setText("Buruk");
+        cekStopKontakBuruk2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cekStopKontakBuruk2ActionPerformed(evt);
+            }
+        });
 
         cekLCDBaik2.setText("Baik");
+        cekLCDBaik2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cekLCDBaik2ActionPerformed(evt);
+            }
+        });
 
         jLabel26.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
         jLabel26.setText("Kabel LCD");
@@ -250,8 +266,9 @@ public class GuiInput extends javax.swing.JFrame {
                                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(cekLCDkBuruk3)
                                     .addComponent(cekStopKontakBuruk2)))
-                            .addComponent(cekLCDBaik2))))
-                .addContainerGap(123, Short.MAX_VALUE))
+                            .addComponent(cekLCDBaik2))
+                        .addGap(118, 118, 118)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -271,7 +288,7 @@ public class GuiInput extends javax.swing.JFrame {
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(posisiStopKontak2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel26)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -293,13 +310,15 @@ public class GuiInput extends javax.swing.JFrame {
         jPanel9.setLayout(jPanel9Layout);
         jPanel9Layout.setHorizontalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, 448, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 40, Short.MAX_VALUE))
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         jLabel25.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
@@ -314,6 +333,11 @@ public class GuiInput extends javax.swing.JFrame {
         jLabel30.setText("Posisi Kabel Lampu");
 
         cekLampuBaik.setText("Baik");
+        cekLampuBaik.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cekLampuBaikActionPerformed(evt);
+            }
+        });
 
         cekKipasAnginburuk.setText("Buruk");
         cekKipasAnginburuk.addActionListener(new java.awt.event.ActionListener() {
@@ -338,6 +362,11 @@ public class GuiInput extends javax.swing.JFrame {
         jLabel34.setText("Kondisi Kabel Lampu");
 
         cekKipasAnginBaik.setText("Baik");
+        cekKipasAnginBaik.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cekKipasAnginBaikActionPerformed(evt);
+            }
+        });
 
         cekLampuBuruk1.setText("Buruk");
         cekLampuBuruk1.addActionListener(new java.awt.event.ActionListener() {
@@ -368,6 +397,11 @@ public class GuiInput extends javax.swing.JFrame {
         jLabel38.setText("Posisi AC");
 
         cekACBaik.setText("Baik");
+        cekACBaik.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cekACBaikActionPerformed(evt);
+            }
+        });
 
         cekACBuruk.setText("Buruk");
         cekACBuruk.addActionListener(new java.awt.event.ActionListener() {
@@ -417,6 +451,11 @@ public class GuiInput extends javax.swing.JFrame {
         });
 
         cekCCTVBaik.setText("Baik");
+        cekCCTVBaik.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cekCCTVBaikActionPerformed(evt);
+            }
+        });
 
         cekCCTVBuruk.setText("Buruk");
         cekCCTVBuruk.addActionListener(new java.awt.event.ActionListener() {
@@ -500,12 +539,12 @@ public class GuiInput extends javax.swing.JFrame {
                             .addComponent(jLabel41, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel42, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel43, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(0, 155, Short.MAX_VALUE))
+                .addGap(0, 168, Short.MAX_VALUE))
             .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel8Layout.createSequentialGroup()
                     .addGap(166, 166, 166)
                     .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(301, Short.MAX_VALUE)))
+                    .addContainerGap(309, Short.MAX_VALUE)))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -582,12 +621,12 @@ public class GuiInput extends javax.swing.JFrame {
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel43, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(posisiCCTV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 24, Short.MAX_VALUE))
+                .addContainerGap(219, Short.MAX_VALUE))
             .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel8Layout.createSequentialGroup()
                     .addGap(311, 311, 311)
                     .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(1050, Short.MAX_VALUE)))
+                    .addContainerGap(1184, Short.MAX_VALUE)))
         );
 
         jScrollPane1.setViewportView(jPanel8);
@@ -613,12 +652,32 @@ public class GuiInput extends javax.swing.JFrame {
         });
 
         cekKunciPintuJendela2.setText("Ada");
+        cekKunciPintuJendela2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cekKunciPintuJendela2ActionPerformed(evt);
+            }
+        });
 
         cekKunciPintuJendelaTidak2.setText("Tidak Ada");
+        cekKunciPintuJendelaTidak2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cekKunciPintuJendelaTidak2ActionPerformed(evt);
+            }
+        });
 
         cekBahayaAman2.setText("Aman");
+        cekBahayaAman2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cekBahayaAman2ActionPerformed(evt);
+            }
+        });
 
         cekBahayaBahaya2.setText("Bahaya");
+        cekBahayaBahaya2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cekBahayaBahaya2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
         jPanel11.setLayout(jPanel11Layout);
@@ -626,7 +685,7 @@ public class GuiInput extends javax.swing.JFrame {
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel11Layout.createSequentialGroup()
                 .addComponent(jLabel55, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 470, Short.MAX_VALUE))
+                .addGap(0, 478, Short.MAX_VALUE))
             .addGroup(jPanel11Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -644,7 +703,7 @@ public class GuiInput extends javax.swing.JFrame {
                         .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(cekBahayaBahaya2)
                             .addComponent(cekKunciPintuJendelaTidak2))))
-                .addContainerGap(274, Short.MAX_VALUE))
+                .addContainerGap(282, Short.MAX_VALUE))
         );
         jPanel11Layout.setVerticalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -664,7 +723,7 @@ public class GuiInput extends javax.swing.JFrame {
                     .addComponent(jLabel57, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cekBahayaAman2)
                     .addComponent(cekBahayaBahaya2))
-                .addGap(0, 302, Short.MAX_VALUE))
+                .addGap(0, 1353, Short.MAX_VALUE))
         );
 
         jScrollPane2.setViewportView(jPanel11);
@@ -673,13 +732,11 @@ public class GuiInput extends javax.swing.JFrame {
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 495, Short.MAX_VALUE)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 466, Short.MAX_VALUE)
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 349, Short.MAX_VALUE)
         );
 
         jTabbedPane5.addTab("INPUT", jPanel4);
@@ -707,8 +764,18 @@ public class GuiInput extends javax.swing.JFrame {
         sliderPencahayaan.setFocusable(false);
 
         cekSirkulasiLancar.setText("Lancar");
+        cekSirkulasiLancar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cekSirkulasiLancarActionPerformed(evt);
+            }
+        });
 
         cekSirkulasiTerhambat.setText("Terhambat");
+        cekSirkulasiTerhambat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cekSirkulasiTerhambatActionPerformed(evt);
+            }
+        });
 
         sliderPencahayaan1.setMajorTickSpacing(400);
         sliderPencahayaan1.setMaximum(400);
@@ -796,7 +863,7 @@ public class GuiInput extends javax.swing.JFrame {
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 406, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 41, Short.MAX_VALUE))
+                .addGap(0, 1120, Short.MAX_VALUE))
         );
 
         jScrollPane3.setViewportView(jPanel6);
@@ -817,20 +884,60 @@ public class GuiInput extends javax.swing.JFrame {
         jLabel48.setText("Kerusakan");
 
         cekKebisinganBising.setText("Bising");
+        cekKebisinganBising.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cekKebisinganBisingActionPerformed(evt);
+            }
+        });
 
         cekKebisinganTidak.setText("Tenang");
+        cekKebisinganTidak.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cekKebisinganTidakActionPerformed(evt);
+            }
+        });
 
         cekBauBau.setText("Bau");
+        cekBauBau.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cekBauBauActionPerformed(evt);
+            }
+        });
 
         cekBauTidak.setText("Harum");
+        cekBauTidak.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cekBauTidakActionPerformed(evt);
+            }
+        });
 
         cekKebocoranBocor.setText("Bocor");
+        cekKebocoranBocor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cekKebocoranBocorActionPerformed(evt);
+            }
+        });
 
         cekKebocoranTidak.setText("Tidak Bocor");
+        cekKebocoranTidak.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cekKebocoranTidakActionPerformed(evt);
+            }
+        });
 
         cekKerusakanRusak.setText("Rusak");
+        cekKerusakanRusak.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cekKerusakanRusakActionPerformed(evt);
+            }
+        });
 
         cekKerusakanTidak.setText("Baik");
+        cekKerusakanTidak.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cekKerusakanTidakActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
         jPanel12.setLayout(jPanel12Layout);
@@ -841,31 +948,26 @@ public class GuiInput extends javax.swing.JFrame {
                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel47, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel12Layout.createSequentialGroup()
-                        .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel48, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE)
                             .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(jPanel12Layout.createSequentialGroup()
-                                    .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(cekKebocoranBocor))
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel12Layout.createSequentialGroup()
-                                    .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGap(40, 40, 40)
-                                    .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(cekKebisinganBising)
-                                        .addComponent(cekBauBau))))
-                            .addGroup(jPanel12Layout.createSequentialGroup()
-                                .addComponent(jLabel48, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(66, 66, 66)
-                                .addComponent(cekKerusakanRusak)))
+                                .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel15, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE)
+                                .addComponent(jLabel16, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGap(40, 40, 40)
+                        .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(cekKebisinganBising)
+                                .addComponent(cekBauBau)
+                                .addComponent(cekKebocoranBocor, javax.swing.GroupLayout.Alignment.TRAILING))
+                            .addComponent(cekKerusakanRusak, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addGap(77, 77, 77)
                         .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(cekKebisinganTidak)
                             .addComponent(cekBauTidak)
                             .addComponent(cekKebocoranTidak)
                             .addComponent(cekKerusakanTidak))))
-                .addContainerGap(229, Short.MAX_VALUE))
+                .addContainerGap(265, Short.MAX_VALUE))
         );
         jPanel12Layout.setVerticalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -891,7 +993,7 @@ public class GuiInput extends javax.swing.JFrame {
                     .addComponent(jLabel48)
                     .addComponent(cekKerusakanRusak)
                     .addComponent(cekKerusakanTidak))
-                .addGap(0, 279, Short.MAX_VALUE))
+                .addGap(0, 1317, Short.MAX_VALUE))
         );
 
         jScrollPane4.setViewportView(jPanel12);
@@ -900,11 +1002,11 @@ public class GuiInput extends javax.swing.JFrame {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 495, Short.MAX_VALUE)
+            .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 466, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 450, Short.MAX_VALUE)
+            .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 349, Short.MAX_VALUE)
         );
 
         jTabbedPane7.addTab("INPUT", jPanel3);
@@ -932,6 +1034,11 @@ public class GuiInput extends javax.swing.JFrame {
         jButton1.setText("SELESAI");
 
         cekLantaiBersih.setText("Bersih");
+        cekLantaiBersih.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cekLantaiBersihActionPerformed(evt);
+            }
+        });
 
         cekDindingBersih.setText("Bersih");
         cekDindingBersih.addActionListener(new java.awt.event.ActionListener() {
@@ -941,16 +1048,46 @@ public class GuiInput extends javax.swing.JFrame {
         });
 
         cekAtapBersih.setText("Bersih");
+        cekAtapBersih.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cekAtapBersihActionPerformed(evt);
+            }
+        });
 
         cekJendelaBersih.setText("Bersih");
+        cekJendelaBersih.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cekJendelaBersihActionPerformed(evt);
+            }
+        });
 
         cekPintuBersih.setText("Bersih");
+        cekPintuBersih.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cekPintuBersihActionPerformed(evt);
+            }
+        });
 
         cekLantaiKotor.setText("Kotor");
+        cekLantaiKotor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cekLantaiKotorActionPerformed(evt);
+            }
+        });
 
         cekAtapKotor.setText("Kotor");
+        cekAtapKotor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cekAtapKotorActionPerformed(evt);
+            }
+        });
 
         cekPintuKotor.setText("Kotor");
+        cekPintuKotor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cekPintuKotorActionPerformed(evt);
+            }
+        });
 
         cekDindingKotor.setText("Kotor");
         cekDindingKotor.addActionListener(new java.awt.event.ActionListener() {
@@ -960,6 +1097,13 @@ public class GuiInput extends javax.swing.JFrame {
         });
 
         cekJendelaKotor.setText("Kotor");
+        cekJendelaKotor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cekJendelaKotorActionPerformed(evt);
+            }
+        });
+
+        buttonSelesai.setText("SELESAI");
 
         javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
         jPanel13.setLayout(jPanel13Layout);
@@ -968,34 +1112,41 @@ public class GuiInput extends javax.swing.JFrame {
             .addGroup(jPanel13Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel49, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel13Layout.createSequentialGroup()
                         .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jLabel50, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel51, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE))
-                            .addComponent(jLabel54, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel53, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel52, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(34, 34, 34)
+                            .addComponent(jLabel49, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel13Layout.createSequentialGroup()
+                                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(jLabel50, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jLabel51, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE))
+                                    .addComponent(jLabel54, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel53, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel52, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(34, 34, 34)
+                                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(cekLantaiBersih)
+                                    .addComponent(cekJendelaBersih)
+                                    .addComponent(cekPintuBersih)
+                                    .addComponent(cekAtapBersih)
+                                    .addComponent(cekDindingBersih))
+                                .addGap(79, 79, 79)
+                                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(cekDindingKotor)
+                                    .addComponent(cekAtapKotor)
+                                    .addComponent(cekPintuKotor)
+                                    .addComponent(cekJendelaKotor)
+                                    .addComponent(cekLantaiKotor))))
+                        .addContainerGap(302, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel13Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cekLantaiBersih)
-                            .addComponent(cekJendelaBersih)
-                            .addComponent(cekPintuBersih)
-                            .addComponent(cekAtapBersih)
-                            .addComponent(cekDindingBersih))
-                        .addGap(79, 79, 79)
-                        .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cekDindingKotor)
-                            .addComponent(cekAtapKotor)
-                            .addComponent(cekPintuKotor)
-                            .addComponent(cekJendelaKotor)
-                            .addComponent(cekLantaiKotor))))
-                .addContainerGap(238, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel13Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(158, 158, 158))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel13Layout.createSequentialGroup()
+                                .addComponent(jButton1)
+                                .addGap(158, 158, 158))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel13Layout.createSequentialGroup()
+                                .addComponent(buttonSelesai)
+                                .addGap(230, 230, 230))))))
         );
         jPanel13Layout.setVerticalGroup(
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1027,7 +1178,9 @@ public class GuiInput extends javax.swing.JFrame {
                     .addComponent(jLabel54)
                     .addComponent(cekJendelaBersih)
                     .addComponent(cekJendelaKotor))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 126, Short.MAX_VALUE)
+                .addGap(60, 60, 60)
+                .addComponent(buttonSelesai)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 1107, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addGap(89, 89, 89))
         );
@@ -1038,11 +1191,11 @@ public class GuiInput extends javax.swing.JFrame {
         jLayeredPane1.setLayout(jLayeredPane1Layout);
         jLayeredPane1Layout.setHorizontalGroup(
             jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 498, Short.MAX_VALUE)
+            .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 469, Short.MAX_VALUE)
         );
         jLayeredPane1Layout.setVerticalGroup(
             jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 476, Short.MAX_VALUE)
+            .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 375, Short.MAX_VALUE)
         );
         jLayeredPane1.setLayer(jScrollPane5, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
@@ -1054,11 +1207,11 @@ public class GuiInput extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, 0)
-                .addComponent(tabbedKeamanan, javax.swing.GroupLayout.DEFAULT_SIZE, 609, Short.MAX_VALUE))
+                .addComponent(tabbedKeamanan, javax.swing.GroupLayout.DEFAULT_SIZE, 580, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(tabbedKeamanan, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 485, Short.MAX_VALUE)
+            .addComponent(tabbedKeamanan, javax.swing.GroupLayout.PREFERRED_SIZE, 384, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -1069,19 +1222,35 @@ public class GuiInput extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>                        
+
+    private void cekDindingKotorActionPerformed(java.awt.event.ActionEvent evt) {                                                
+    cekDindingBersih.setSelected(false);        // TODO add your handling code here:
+    }                                               
+
+    private void cekDindingBersihActionPerformed(java.awt.event.ActionEvent evt) {                                                 
+    cekDindingKotor.setSelected(false);        // TODO add your handling code here:
+    }                                                
+
+    private void ComboBoxKekokohanActionPerformed(java.awt.event.ActionEvent evt) {                                                  
+        // TODO add your handling code here:
+    }                                                 
 
     private void posisiCCTVActionPerformed(java.awt.event.ActionEvent evt) {                                           
         // TODO add your handling code here:
     }                                          
 
     private void cekCCTVBurukActionPerformed(java.awt.event.ActionEvent evt) {                                             
-        // TODO add your handling code here:
+        cekCCTVBaik.setSelected(false);// TODO add your handling code here:
     }                                            
+
+    private void cekCCTVBaikActionPerformed(java.awt.event.ActionEvent evt) {                                            
+        cekCCTVBuruk.setSelected(false);        // TODO add your handling code here:
+    }                                           
 
     private void jumlahCCTVActionPerformed(java.awt.event.ActionEvent evt) {                                           
         // TODO add your handling code here:
@@ -1100,8 +1269,12 @@ public class GuiInput extends javax.swing.JFrame {
     }                                        
 
     private void cekACBurukActionPerformed(java.awt.event.ActionEvent evt) {                                           
-        // TODO add your handling code here:
+        cekACBaik.setSelected(false);     // TODO a   dd your handling code here:
     }                                          
+
+    private void cekACBaikActionPerformed(java.awt.event.ActionEvent evt) {                                          
+        cekACBuruk.setSelected(false);        // TODO add your handling code here:
+    }                                         
 
     private void jumlahACActionPerformed(java.awt.event.ActionEvent evt) {                                         
         // TODO add your handling code here:
@@ -1112,36 +1285,132 @@ public class GuiInput extends javax.swing.JFrame {
     }                                                
 
     private void cekLampuBuruk1ActionPerformed(java.awt.event.ActionEvent evt) {                                               
-        // TODO add your handling code here:
+        cekLampuBaik.setSelected(false);        // TODO add your handling code here:
     }                                              
+
+    private void cekKipasAnginBaikActionPerformed(java.awt.event.ActionEvent evt) {                                                  
+        cekKipasAnginburuk.setSelected(false);   // TODO add your handling code here:
+    }                                                 
 
     private void jumlahKipasAnginActionPerformed(java.awt.event.ActionEvent evt) {                                                 
         // TODO add your handling code here:
     }                                                
 
     private void cekKipasAnginburukActionPerformed(java.awt.event.ActionEvent evt) {                                                   
-        // TODO add your handling code here:
+        cekKipasAnginBaik.setSelected(false);        // TODO add your handling code here:
     }                                                  
 
+    private void cekLampuBaikActionPerformed(java.awt.event.ActionEvent evt) {                                             
+        cekLampuBuruk1.setSelected(false);        // TODO add your handling code here:
+    }                                            
+
     private void cekLCDkBuruk3ActionPerformed(java.awt.event.ActionEvent evt) {                                              
-        // TODO add your handling code here:
+        cekLCDBaik2.setSelected(false);        // TODO add your handling code here:
     }                                             
 
+    private void cekLCDBaik2ActionPerformed(java.awt.event.ActionEvent evt) {                                            
+        cekLCDkBuruk3.setSelected(false);   // TODO add your handling code here:
+    }                                           
+
+    private void cekStopKontakBuruk2ActionPerformed(java.awt.event.ActionEvent evt) {                                                    
+        cekStopKontakBaik2.setSelected(false);    // TODO add your handling code here:
+    }                                                   
+
+    private void cekStopKontakBaik2ActionPerformed(java.awt.event.ActionEvent evt) {                                                   
+        cekStopKontakBuruk2.setSelected(false);        // TODO add your handling code here:
+    }                                                  
+
     private void jumlahStopKontak2ActionPerformed(java.awt.event.ActionEvent evt) {                                                  
-        // TODO add your handling code here:
+
     }                                                 
 
-    private void cekDindingBersihActionPerformed(java.awt.event.ActionEvent evt) {                                                 
-        // TODO add your handling code here:
+    private void cekKunciPintuJendela2ActionPerformed(java.awt.event.ActionEvent evt) {                                                      
+    cekKunciPintuJendelaTidak2.setSelected(false);        // TODO add your handling code here:
+    }                                                     
+
+    private void cekKunciPintuJendelaTidak2ActionPerformed(java.awt.event.ActionEvent evt) {                                                           
+    cekKunciPintuJendela2.setSelected(false);        // TODO add your handling code here:
+    }                                                          
+
+    private void cekBahayaAman2ActionPerformed(java.awt.event.ActionEvent evt) {                                               
+    cekBahayaBahaya2.setSelected(false);        // TODO add your handling code here:
+    }                                              
+
+    private void cekBahayaBahaya2ActionPerformed(java.awt.event.ActionEvent evt) {                                                 
+    cekBahayaAman2.setSelected(false);        // TODO add your handling code here:
     }                                                
 
-    private void cekDindingKotorActionPerformed(java.awt.event.ActionEvent evt) {                                                
-        // TODO add your handling code here:
+    private void cekSirkulasiLancarActionPerformed(java.awt.event.ActionEvent evt) {                                                   
+    cekSirkulasiTerhambat.setSelected(false);        // TODO add your handling code here:
+    }                                                  
+
+    private void cekSirkulasiTerhambatActionPerformed(java.awt.event.ActionEvent evt) {                                                      
+    cekSirkulasiLancar.setSelected(false);        // TODO add your handling code here:
+    }                                                     
+
+    private void cekKebisinganBisingActionPerformed(java.awt.event.ActionEvent evt) {                                                    
+    cekKebisinganTidak.setSelected(false);        // TODO add your handling code here:
+    }                                                   
+
+    private void cekKebisinganTidakActionPerformed(java.awt.event.ActionEvent evt) {                                                   
+    cekKebisinganBising.setSelected(false);        // TODO add your handling code here:
+    }                                                  
+
+    private void cekBauBauActionPerformed(java.awt.event.ActionEvent evt) {                                          
+    cekBauTidak.setSelected(false);        // TODO add your handling code here:
+    }                                         
+
+    private void cekBauTidakActionPerformed(java.awt.event.ActionEvent evt) {                                            
+    cekBauBau.setSelected(false);        // TODO add your handling code here:
+    }                                           
+
+    private void cekKebocoranBocorActionPerformed(java.awt.event.ActionEvent evt) {                                                  
+    cekKebocoranTidak.setSelected(false);        // TODO add your handling code here:
+    }                                                 
+
+    private void cekKebocoranTidakActionPerformed(java.awt.event.ActionEvent evt) {                                                  
+    cekKebocoranBocor.setSelected(false);        // TODO add your handling code here:
+    }                                                 
+
+    private void cekKerusakanRusakActionPerformed(java.awt.event.ActionEvent evt) {                                                  
+    cekKerusakanTidak.setSelected(false);        // TODO add your handling code here:
+    }                                                 
+
+    private void cekKerusakanTidakActionPerformed(java.awt.event.ActionEvent evt) {                                                  
+    cekKerusakanRusak.setSelected(false);        // TODO add your handling code here:
+    }                                                 
+
+    private void cekLantaiBersihActionPerformed(java.awt.event.ActionEvent evt) {                                                
+    cekLantaiKotor.setSelected(false);        // TODO add your handling code here:
     }                                               
 
-    private void ComboBoxKekokohanActionPerformed(java.awt.event.ActionEvent evt) {                                                  
-        // TODO add your handling code here:
-    }                                                 
+    private void cekLantaiKotorActionPerformed(java.awt.event.ActionEvent evt) {                                               
+    cekLantaiBersih.setSelected(false);        // TODO add your handling code here:
+    }                                              
+
+    private void cekAtapBersihActionPerformed(java.awt.event.ActionEvent evt) {                                              
+    cekAtapKotor.setSelected(false);        // TODO add your handling code here:
+    }                                             
+
+    private void cekAtapKotorActionPerformed(java.awt.event.ActionEvent evt) {                                             
+    cekLantaiBersih.setSelected(false);        // TODO add your handling code here:
+    }                                            
+
+    private void cekPintuBersihActionPerformed(java.awt.event.ActionEvent evt) {                                               
+    cekPintuKotor.setSelected(false);        // TODO add your handling code here:
+    }                                              
+
+    private void cekPintuKotorActionPerformed(java.awt.event.ActionEvent evt) {                                              
+    cekPintuBersih.setSelected(false);        // TODO add your handling code here:
+    }                                             
+
+    private void cekJendelaBersihActionPerformed(java.awt.event.ActionEvent evt) {                                                 
+    cekJendelaKotor.setSelected(false);        // TODO add your handling code here:
+    }                                                
+
+    private void cekJendelaKotorActionPerformed(java.awt.event.ActionEvent evt) {                                                
+    cekJendelaBersih.setSelected(false);        // TODO add your handling code here:
+    }                                               
 
     /**
      * @param args the command line arguments
@@ -1180,19 +1449,14 @@ public class GuiInput extends javax.swing.JFrame {
 
     // Variables declaration - do not modify                     
     private javax.swing.JTextField Bandwith;
-    private javax.swing.JComboBox ComboBoxKekokohan;
-    private javax.swing.JComboBox ComboBoxKekokohan1;
     private javax.swing.JComboBox ComboBoxKekokohan2;
     private javax.swing.JTextField SSID;
+    private javax.swing.JButton buttonSelesai;
     private javax.swing.JCheckBox cekACBaik;
     private javax.swing.JCheckBox cekACBuruk;
     private javax.swing.JCheckBox cekAtapBersih;
     private javax.swing.JCheckBox cekAtapKotor;
-    private javax.swing.JCheckBox cekBahayaAman;
-    private javax.swing.JCheckBox cekBahayaAman1;
     private javax.swing.JCheckBox cekBahayaAman2;
-    private javax.swing.JCheckBox cekBahayaBahaya;
-    private javax.swing.JCheckBox cekBahayaBahaya1;
     private javax.swing.JCheckBox cekBahayaBahaya2;
     private javax.swing.JCheckBox cekBauBau;
     private javax.swing.JCheckBox cekBauTidak;
@@ -1210,11 +1474,7 @@ public class GuiInput extends javax.swing.JFrame {
     private javax.swing.JCheckBox cekKerusakanTidak;
     private javax.swing.JCheckBox cekKipasAnginBaik;
     private javax.swing.JCheckBox cekKipasAnginburuk;
-    private javax.swing.JCheckBox cekKunciPintuJendela;
-    private javax.swing.JCheckBox cekKunciPintuJendela1;
     private javax.swing.JCheckBox cekKunciPintuJendela2;
-    private javax.swing.JCheckBox cekKunciPintuJendelaTidak;
-    private javax.swing.JCheckBox cekKunciPintuJendelaTidak1;
     private javax.swing.JCheckBox cekKunciPintuJendelaTidak2;
     private javax.swing.JCheckBox cekLCDBaik2;
     private javax.swing.JCheckBox cekLCDkBuruk3;
@@ -1232,9 +1492,6 @@ public class GuiInput extends javax.swing.JFrame {
     private javax.swing.JColorChooser jColorChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
@@ -1262,18 +1519,14 @@ public class GuiInput extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel39;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel41;
     private javax.swing.JLabel jLabel42;
     private javax.swing.JLabel jLabel43;
-    private javax.swing.JLabel jLabel44;
     private javax.swing.JLabel jLabel45;
-    private javax.swing.JLabel jLabel46;
     private javax.swing.JLabel jLabel47;
     private javax.swing.JLabel jLabel48;
     private javax.swing.JLabel jLabel49;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel50;
     private javax.swing.JLabel jLabel51;
     private javax.swing.JLabel jLabel52;
@@ -1282,7 +1535,6 @@ public class GuiInput extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel55;
     private javax.swing.JLabel jLabel56;
     private javax.swing.JLabel jLabel57;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
@@ -1293,10 +1545,8 @@ public class GuiInput extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel13;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
