@@ -8,17 +8,26 @@
  *
  * @author the 12
  */
-public class inputAwal extends javax.swing.JFrame {
-Utama qaz=new Utama() ;
+import java.sql.*;
+import javax.swing.JOptionPane;
+public class inputAwal extends javax.swing.JFrame  {
+    Statement stmt ;
+Connection con ;
+String url = "jdbc:mysql://localhost:3306/tbjava";
+    private String alamat;
+//Utama qaz=new Utama() ;
 
     /**
      * Creates new form inputAwal
      */
-    public inputAwal() {
-        initComponents();
-        setResizable(false);
-        namaRuang.setText("nama");
-        lokasiRuang.setText("lokasi");
+    /*public inputAwal() {
+       initComponents();
+       setResizable(false);
+        namaRuang.setText("");
+        lokasiRuang.setText("");
+        jurusan.setText("");
+       // frame =new Jframe();
+        
     }
 
     /**
@@ -74,6 +83,16 @@ Utama qaz=new Utama() ;
         });
 
         jButton2.setText("lanjut");
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton2MouseClicked(evt);
+            }
+        });
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("selesai");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -108,7 +127,7 @@ Utama qaz=new Utama() ;
                                 .addComponent(jButton3)
                                 .addGap(18, 18, 18)
                                 .addComponent(jButton2)))))
-                .addContainerGap(52, Short.MAX_VALUE))
+                .addContainerGap(57, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -142,7 +161,7 @@ Utama qaz=new Utama() ;
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -164,10 +183,43 @@ Utama qaz=new Utama() ;
         // TODO add your handling code here:
     }                                        
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+      // frame.dispose();
+        GuiInput qaz=new GuiInput();
+        qaz.setVisible(true);
+         ;
+    }                                        
+
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {                                      
+        //Utama qaz=new Utama();
+        String nama = namaRuang.getText();
+        String lokasi= lokasiRuang.getText();
+        String jurus = jurusan.getText(); 
+        
+        JOptionPane.showMessageDialog(null,namaRuang+","+lokasiRuang+","+jurusan);
+    
+       try {
+           con = DriverManager.getConnection(url,"root","");
+           System.out.println("Database ditemukan");
+           stmt = con.createStatement();
+           String sql = "insert into input awal('"+namaRuang+"','"+lokasiRuang+"','"+jurusan+"')";
+           stmt.executeUpdate(sql);
+       } catch (SQLException ex){
+            System.err.println("SQLException:"+ex.getMessage());
+       }
+        // TODO add your handling code here:
+    }                                     
+
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            System.out.println("Driver ditemukan");
+        } catch (Exception e) {
+                System.out.println("Error" +e);   
+        }
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -213,3 +265,4 @@ Utama qaz=new Utama() ;
     private javax.swing.JTextField namaRuang;
     // End of variables declaration                   
 }
+
