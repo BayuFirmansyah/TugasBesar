@@ -5,15 +5,7 @@ import java.util.Scanner;
 public class SaranaUtama {
     
     
-private String NamaRuang;
-private String LokasiRuang;
-private String ProgramStudi;
-private String Fakultas;
-private int PanjangRuang;
-private int LebarRuang;
-private int JumlahKursi;
-private int JumlahPintu;
-private int JumlahJendela;
+
 private int JumlahStopKontak;
 private String KondisiStopKontak;
 private String PosisiStopKontak;
@@ -35,77 +27,7 @@ private int JumlahCCTV;
 private String KondisiCCTV;
 private String PosisiCCTV;
 
-    public String getNamaRuang() {
-        return NamaRuang;
-    }
 
-    public void setNamaRuang(String NamaRuang) {
-        this.NamaRuang = NamaRuang;
-    }
-
-    public String getLokasiRuang() {
-        return LokasiRuang;
-    }
-
-    public void setLokasiRuang(String LokasiRuang) {
-        this.LokasiRuang = LokasiRuang;
-    }
-
-    public String getProgramStudi() {
-        return ProgramStudi;
-    }
-
-    public void setProgramStudi(String ProgramStudi) {
-        this.ProgramStudi = ProgramStudi;
-    }
-
-    public String getFakultas() {
-        return Fakultas;
-    }
-
-    public void setFakultas(String Fakultas) {
-        this.Fakultas = Fakultas;
-    }
-
-    public int getPanjangRuang() {
-        return PanjangRuang;
-    }
-
-    public void setPanjangRuang(int PanjangRuang) {
-        this.PanjangRuang = PanjangRuang;
-    }
-
-    public int getLebarRuang() {
-        return LebarRuang;
-    }
-
-    public void setLebarRuang(int LebarRuang) {
-        this.LebarRuang = LebarRuang;
-    }
-
-    public int getJumlahKursi() {
-        return JumlahKursi;
-    }
-
-    public void setJumlahKursi(int JumlahKursi) {
-        this.JumlahKursi = JumlahKursi;
-    }
-
-    public int getJumlahPintu() {
-        return JumlahPintu;
-    }
-
-    public void setJumlahPintu(int JumlahPintu) {
-        this.JumlahPintu = JumlahPintu;
-    }
-
-    public int getJumlahJendela() {
-        return JumlahJendela;
-    }
-
-    public void setJumlahJendela(int JumlahJendela) {
-        this.JumlahJendela = JumlahJendela;
-    }
 
     public int getJumlahStopKontak() {
         return JumlahStopKontak;
@@ -486,5 +408,14 @@ private String PosisiCCTV;
         System.out.println("Kondisi CCTV : "+KondisiCCTV);
         System.out.println("Posisi CCTV : "+PosisiCCTV);
    }
+
+
+    void persentaseKondisiSarana() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    void output(int jumlahStopKontak, String kondisiStopKontak, String posisiStopKontak, int jumlahKabelLCD, String kondisiKabelLCD, String posisiKabelLCD, int jumlahLampu, String kondisiLampu, String posisiLampu, int jumlahKipasAngin, String posisiKipasAngin, String kondisiKipasAngin, int jumlahAC, String kondisiAC, String posisiAC, String ssid, String bandwidth, int jumlahCCTV, String kondisiCCTV, String posisiCCTV) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
  }
 
