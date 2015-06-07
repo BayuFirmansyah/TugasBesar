@@ -1,3 +1,13 @@
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -8,26 +18,21 @@
  *
  * @author the 12
  */
-import java.sql.*;
-import javax.swing.JOptionPane;
-public class inputAwal extends javax.swing.JFrame  {
-    Statement stmt ;
-Connection con ;
-String url = "jdbc:mysql://localhost:3306/tbjava";
-    private String alamat;
-//Utama qaz=new Utama() ;
+public class inputDataAwal extends javax.swing.JFrame {
+   
+   public Connection con; 
+    private String sql; // variabel "sql" digunakan menampung hasil query database
+    private Statement st; // object "st" dari class Statement
+    private ResultSet rs; // object "rs" dari class Resulset
+    private PreparedStatement ps; // object "ps" dari class PreparedStatement
+    private DefaultTableModel dtm; //object "dtm" dari class DefaultTableModel
+   
 
     /**
-     * Creates new form inputAwal
+     * Creates new form inputDataAwal
      */
-    /*public inputAwal() {
-       initComponents();
-       setResizable(false);
-        namaRuang.setText("");
-        lokasiRuang.setText("");
-        jurusan.setText("");
-       // frame =new Jframe();
-        
+    public inputDataAwal() {
+        initComponents();
     }
 
     /**
@@ -39,19 +44,16 @@ String url = "jdbc:mysql://localhost:3306/tbjava";
     // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        namaRuang = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        lokasiRuang = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
+        namaRuang = new javax.swing.JTextField();
+        lokasiRuang = new javax.swing.JTextField();
         jurusan = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-
-        jButton1.setText("jButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -60,13 +62,15 @@ String url = "jdbc:mysql://localhost:3306/tbjava";
 
         jLabel2.setText("Nama Ruang");
 
+        jLabel3.setText("Lokasi Ruang");
+
+        jLabel4.setText("Jurusan");
+
         namaRuang.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 namaRuangActionPerformed(evt);
             }
         });
-
-        jLabel3.setText("Lokasi Ruang");
 
         lokasiRuang.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -74,27 +78,20 @@ String url = "jdbc:mysql://localhost:3306/tbjava";
             }
         });
 
-        jLabel4.setText("Jurusan");
-
         jurusan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jurusanActionPerformed(evt);
             }
         });
 
-        jButton2.setText("lanjut");
-        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton2MouseClicked(evt);
-            }
-        });
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jButton1.setText("Lanjut");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jButton1ActionPerformed(evt);
             }
         });
 
-        jButton3.setText("selesai");
+        jButton3.setText("Hapus ");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -106,33 +103,36 @@ String url = "jdbc:mysql://localhost:3306/tbjava";
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(namaRuang)
-                                    .addComponent(lokasiRuang, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE)
-                                    .addComponent(jurusan)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jButton3)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButton2)))))
-                .addContainerGap(57, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(namaRuang))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(46, 46, 46)
+                                .addComponent(jurusan))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(14, 14, 14)
+                                .addComponent(lokasiRuang)))
+                        .addGap(74, 74, 74))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 185, Short.MAX_VALUE)
+                        .addComponent(jButton3)
+                        .addGap(33, 33, 33)
+                        .addComponent(jButton1)
+                        .addGap(44, 44, 44))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -142,15 +142,15 @@ String url = "jdbc:mysql://localhost:3306/tbjava";
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(lokasiRuang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(20, 20, 20)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(jurusan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(71, 71, 71)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
+                    .addComponent(jButton1)
                     .addComponent(jButton3))
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addGap(40, 40, 40))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -161,14 +161,14 @@ String url = "jdbc:mysql://localhost:3306/tbjava";
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>                        
 
     private void namaRuangActionPerformed(java.awt.event.ActionEvent evt) {                                          
-       
+
     }                                         
 
     private void lokasiRuangActionPerformed(java.awt.event.ActionEvent evt) {                                            
@@ -179,47 +179,40 @@ String url = "jdbc:mysql://localhost:3306/tbjava";
         // TODO add your handling code here:
     }                                       
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        // TODO add your handling code here:
-    }                                        
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+try {
+             String sql="insert into input awal values('"+namaRuang.getText()
+                                             +"','"+lokasiRuang.getText()
+                                             +"','"+jurusan.getText()+"')"; 
+            st=con.createStatement(); 
+            st.executeUpdate(sql); 
+            JOptionPane.showMessageDialog(null, "DATA SUKSES TERSIMPAN"); 
+           
+           } catch (Exception e)
+           {
+            JOptionPane.showMessageDialog(null, "DATA GAGAL TERSIMPAN"); 
+//indikator yang sitampilkan pada comand dialog jika data gagal tersimpan
+            }
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {                                         
-      // frame.dispose();
-        GuiInput qaz=new GuiInput();
-        qaz.setVisible(true);
-         ;
-    }                                        
-
-    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {                                      
-        //Utama qaz=new Utama();
-        String nama = namaRuang.getText();
-        String lokasi= lokasiRuang.getText();
-        String jurus = jurusan.getText(); 
         
-        JOptionPane.showMessageDialog(null,namaRuang+","+lokasiRuang+","+jurusan);
-    
-       try {
-           con = DriverManager.getConnection(url,"root","");
-           System.out.println("Database ditemukan");
-           stmt = con.createStatement();
-           String sql = "insert into input awal('"+namaRuang+"','"+lokasiRuang+"','"+jurusan+"')";
-           stmt.executeUpdate(sql);
-       } catch (SQLException ex){
-            System.err.println("SQLException:"+ex.getMessage());
-       }
-        // TODO add your handling code here:
-    }                                     
+        GuiInput qaz=new GuiInput();
+        qaz.setVisible(true);        // TODO add your handling code here:
+    }                                        
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+try{
+   
+    namaRuang.setText("");
+    lokasiRuang.setText("");
+    jurusan.setText("");
+}catch (Exception e){
+}// TODO add your handling code here:
+    }                                        
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-            System.out.println("Driver ditemukan");
-        } catch (Exception e) {
-                System.out.println("Error" +e);   
-        }
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -233,27 +226,26 @@ String url = "jdbc:mysql://localhost:3306/tbjava";
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(inputAwal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(inputDataAwal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(inputAwal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(inputDataAwal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(inputAwal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(inputDataAwal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(inputAwal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(inputDataAwal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new inputAwal().setVisible(true);
+                new inputDataAwal().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify                     
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -265,4 +257,4 @@ String url = "jdbc:mysql://localhost:3306/tbjava";
     private javax.swing.JTextField namaRuang;
     // End of variables declaration                   
 }
-
+    
